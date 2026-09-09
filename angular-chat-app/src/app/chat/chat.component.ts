@@ -63,9 +63,9 @@ export class ChatComponent {
       this.loading.set(true);
       this.error.set(null);
 
-      const botMessage =await this.chatService.sendMessageToLLM(newMessage.message);
+      const botMessage = await this.chatService.sendMessageToLLM(newMessage.message);
       const botMsg: Message = { 
-        message: botMessage, 
+        message: botMessage.message.content, 
         sender: 'bot', 
         id: Date.now() + 1
       };
@@ -75,7 +75,7 @@ export class ChatComponent {
     } catch (error: any) {
       this.error.set(error.message);
     } finally {
-      // this.loading.set(false);
+      this.loading.set(false);
     }
   }
 }

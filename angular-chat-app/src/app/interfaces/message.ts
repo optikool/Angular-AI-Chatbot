@@ -4,3 +4,16 @@ export interface Message {
     sender: 'user' | 'bot';
     modelName?: string;
 }
+
+export interface Messages {
+    role: string;
+    content: string;
+    thinking?: string;
+}
+
+export interface MessageAPIBody {
+    model: string;
+    messages: Messages[];
+    stream: boolean;
+}
+
