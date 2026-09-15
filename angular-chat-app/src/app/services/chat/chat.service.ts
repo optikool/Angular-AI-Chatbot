@@ -15,11 +15,11 @@ export class ChatService {
     const body: MessageAPIBody = {
       model: 'qwen3:14b',
       messages: [{ role: 'user', content: message }],
-      stream: true
+      stream: false
     };
 
     try {
-      const reply = await firstValueFrom(this.http.post(`${this.apiUrl}/chat`, body));
+      const reply = await firstValueFrom(this.http.post(`${this.apiUrl}/ollama/chat`, body));
       return reply;
     } catch (error: any) {
       throw new Error('Error sending message to LLM: ' + error.message);

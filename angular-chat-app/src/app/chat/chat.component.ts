@@ -65,7 +65,7 @@ export class ChatComponent {
 
       const botMessage = await this.chatService.sendMessageToLLM(newMessage.message);
       const botMsg: Message = { 
-        message: botMessage.message.content, 
+        message: botMessage.reply, 
         sender: 'bot', 
         id: Date.now() + 1
       };
